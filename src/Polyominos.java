@@ -1,17 +1,11 @@
-import java.awt.Container;
-
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 public class Polyominos {
 	private Config config;
 	
 	private JFrame window;
-	private Container container;
 	
 	private Navigator navigator;
-	
-	private EventHandler event_handler;
 	
 	public Polyominos() {
 		this.config = new Config();
