@@ -44,10 +44,11 @@ public class IntroPanel extends JPanel implements ActionListener {
 		if(e.getSource() instanceof JButton) {
 			JButton source = (JButton)e.getSource();
 			String id = source.getText();
-			System.out.println("Button " + id + " Pressed");
 			
 			if(id.equals("Settings")) {
 				this.navigator.set_page(Pages.Settings);
+			} else {
+				System.out.println("Unknown Button Pressed");
 			}
 		} else {
 			System.out.println("Unknown Event Source");

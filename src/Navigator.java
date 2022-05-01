@@ -19,16 +19,15 @@ public class Navigator {
 	}
 	
 	public void set_page(Pages page) {
-		System.out.println("Navigate");
 		this.container.removeAll();
 		
 		switch(page) {
 		case Title:
-			System.out.println("Switching to title");
+			// System.out.println("Switching to Title");
 			this.container.add(this.title);
 			break;
 		case Settings:
-			System.out.println("Switching to settings");
+			// System.out.println("Switching to Settings");
 			this.container.add(this.settings);
 			break;
 		}
