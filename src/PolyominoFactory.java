@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class PolyominoFactory {
 	private class RecursivePolyomino {
@@ -98,13 +99,19 @@ public class PolyominoFactory {
 	
 	public PolyominoFactory() { /* ... */ }
 	
-	private void recurse(RecursivePolyomino parent, int remaining) {
+	private void recurse(LinkedList<Polyomino> polyominos, RecursivePolyomino parent, int remaining) {
 		/* TODO: This recursive function does NOT generate 'T' shapes, because it can't backtrack. In the future, generate
 		 * a buffer at start time (in generatePolyominos) that tracks the history of cell placement, then look through that
 		 * buffer for neighbors instead of just the current cell.
 		*/
 		if(remaining == 0) {
-			System.out.println(parent.toPolyomino());
+			Polyomino new_polyomino = parent.toPolyomino();
+			for(Polyomino other : polyominos) {
+				if(new_polyomino.equals(other)) {
+					return;
+				}
+			}
+			polyominos.add(new_polyomino);
 			return;
 		}
 		
@@ -131,15 +138,20 @@ public class PolyominoFactory {
 			}
 			child.cells[child.w_y][child.w_x] = true;
 			
-			this.recurse(child, remaining - 1);
+			this.recurse(polyominos, child, remaining - 1);
 		}
 	}
 	
-	public ArrayList<Polyomino> generatePolyominos(int size) {
+	public LinkedList<Polyomino> generatePolyominos(int size) {
 		RecursivePolyomino parent = new RecursivePolyomino(size);
 		
-		this.recurse(parent, size - 1);
+		LinkedList<Polyomino> res = new LinkedList<Polyomino>();
+		this.recurse(res, parent, size - 1);
+
+		for(Polyomino poly : res) {
+			System.out.println(poly.toString());
+		}
 		
-		return null;
+		return res;
 	}
 }
