@@ -32,6 +32,48 @@ public class PolyominoFactory {
 			this.w_y = other.w_y;
 		}
 		
+		public Polyomino toPolyomino() {
+			int side_length = this.size * 2 - 1;
+			boolean ftop = false, fbottom = false, fleft = false, fright = false;
+			int top = 0, bottom = side_length - 1, left = 0, right = side_length - 1;
+			
+			// Get bounds of the Polyomino (remove translation information)
+			for(int i = 0; i < side_length; i++) {
+				for(int j = 0; j < side_length; j++) {
+					if(!ftop && this.cells[i][j]) {
+						top = i;
+						ftop = true;
+					}
+					
+					if(!fbottom && this.cells[side_length - i - 1][j]) {
+						bottom = side_length - i - 1;
+						fbottom = true;
+					}
+					
+					if(!fleft && this.cells[j][i]) {
+						left = i;
+						fleft = true;
+					}
+					
+					if(!fright && this.cells[j][side_length - i - 1]) {
+						right = side_length - i - 1;
+						fright = true;
+					}
+				}
+			}
+			
+			int width = right - left + 1, height = bottom - top + 1;
+			Polyomino res = new Polyomino(width, height);
+			
+			for(int y = 0; y < height; y++) {
+				for(int x = 0; x < width; x++) {
+					res.setCell(x, y, this.cells[y + top][x + left]);
+				}
+			}
+			
+			return res;
+		}
+		
 		@Override
 		public String toString() {
 			String res = "";
@@ -62,7 +104,7 @@ public class PolyominoFactory {
 		 * buffer for neighbors instead of just the current cell.
 		*/
 		if(remaining == 0) {
-			System.out.println(parent);
+			System.out.println(parent.toPolyomino());
 			return;
 		}
 		
