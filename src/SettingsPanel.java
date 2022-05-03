@@ -14,8 +14,8 @@ public class SettingsPanel extends JPanel implements ActionListener {
 	private Navigator navigator;
 	
 	public SettingsPanel(Navigator nav, Config config) {
-		this.navigator = nav;
 		this.config = config;
+		this.navigator = nav;
 		
 		this.setBackground(Color.WHITE);
 		

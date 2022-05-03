@@ -80,7 +80,7 @@ public class Polyomino {
 			}
 			res += "|\n";
 		}
-		res += "----------\n";
+		res += "-".repeat(this.width);
 		
 		return res;
 	}
