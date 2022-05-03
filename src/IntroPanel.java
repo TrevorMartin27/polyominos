@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class IntroPanel extends JPanel implements ActionListener {
-	Navigator navigator;
+	private Navigator navigator;
 	
 	public IntroPanel(Navigator nav) {
 		this.navigator = nav;
@@ -45,7 +45,9 @@ public class IntroPanel extends JPanel implements ActionListener {
 			JButton source = (JButton)e.getSource();
 			String id = source.getText();
 			
-			if(id.equals("Settings")) {
+			if(id.equals("Play")) {
+				this.navigator.set_page(Pages.Play);
+			} else if(id.equals("Settings")) {
 				this.navigator.set_page(Pages.Settings);
 			} else {
 				System.out.println("Unknown Button Pressed");
