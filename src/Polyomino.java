@@ -10,6 +10,18 @@ public class Polyomino {
 		this.cells = new boolean[height][width];
 	}
 	
+	public Polyomino(Polyomino other) {
+		this.width = other.width;
+		this.height = other.height;
+		
+		this.cells = new boolean[height][width];
+		for(int y = 0; y < this.height; y++) {
+			for(int x = 0; x < this.width; x++) {
+				this.cells[y][x] = other.cells[y][x];
+			}
+		}
+	}
+	
 	public Polyomino rotate() {
 		Polyomino res = new Polyomino(this.height, this.width);
 
