@@ -23,9 +23,6 @@ public class Polyominos {
 		this.navigator.set_page(Pages.Title);
 		
 		this.window.setVisible(true);
-		
-		PolyominoFactory factory = new PolyominoFactory();
-		factory.generatePolyominos(4);
 	}
 	
 	public static void main(String[] args) {
