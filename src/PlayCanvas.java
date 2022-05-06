@@ -16,6 +16,9 @@ public class PlayCanvas extends JPanel {
 		this.board = new int[BOARD_HEIGHT][BOARD_WIDTH];
 	}
 	
+	public int get_width() { return this.BOARD_WIDTH; }
+	public int get_height() { return this.BOARD_HEIGHT; }
+
 	public void set_cell(int x, int y, int value) {
 		this.board[y][x] = value;
 	}
@@ -24,7 +27,7 @@ public class PlayCanvas extends JPanel {
 		return this.board[y][x];
 	}
 	
-	public void paintComponent(Graphics g) {
+	public void paintComponent(Graphics g, FallingPolyomino falling) {
 		super.paintComponent(g);
 		
 		final Color[] colors = {
@@ -53,6 +56,18 @@ public class PlayCanvas extends JPanel {
 				} else {
 					int curr = this.board[y - 1][x - 1];
 					
+					// Render the falling piece if there
+					if(falling != null) {
+						if((x - 1 >= falling.get_x()) && (x - 1 < falling.get_x() + falling.get_width()) &&
+							(y - 1 >= falling.get_y()) && (y - 1 < falling.get_y() + falling.get_height())) {
+							int local_x = x - falling.get_x() - 1, local_y = y - falling.get_y() - 1;
+
+							if(falling.getCell(local_x, local_y)) {
+								curr = falling.get_color();
+							}
+						}
+					}
+
 					g.setColor(colors[curr]);
 					
 					g.fill3DRect(tx, ty,
