@@ -148,9 +148,11 @@ public class PolyominoFactory {
 		LinkedList<Polyomino> res = new LinkedList<Polyomino>();
 		this.recurse(res, parent, size - 1);
 
+		/*
 		for(Polyomino poly : res) {
 			System.out.println(poly.toString());
 		}
+		*/
 		
 		return res;
 	}
