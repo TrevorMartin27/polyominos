@@ -1,9 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
 
 import javax.swing.JPanel;
-import javax.swing.Timer;
 
 public class PlayCanvas extends JPanel {
 	private final int CELL_SIZE = 16,
