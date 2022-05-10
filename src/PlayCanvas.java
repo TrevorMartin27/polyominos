@@ -1,15 +1,19 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
 
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 public class PlayCanvas extends JPanel {
 	private final int CELL_SIZE = 16,
 		CELL_SPACING = 1,
 		BOARD_HEIGHT = 20,
 		BOARD_WIDTH = 10;
+	private final int TICKS_PER_SECOND = 10;
 	
 	private int[][] board;
+	private Timer ticker = null;
 	
 	public PlayCanvas() {
 		// Board is by default all 0s
@@ -25,6 +29,30 @@ public class PlayCanvas extends JPanel {
 	
 	public int get_cell(int x, int y) {
 		return this.board[y][x];
+	}
+	
+	private void startTicker() {
+		this.stopTicker();
+		this.ticker = new Timer(1000 / TICKS_PER_SECOND, e -> { this.tick(); });
+	}
+	
+	private void stopTicker() {
+		if(this.ticker != null) {
+			this.ticker.stop();
+			this.ticker = null;
+		}
+	}
+	
+	public void startGame() {
+		this.startTicker();
+	}
+	
+	public void stopGame() {
+		this.stopTicker();
+	}
+	
+	public void tick() {
+		System.out.println("TICK");
 	}
 	
 	public void paintComponent(Graphics g, FallingPolyomino falling) {
