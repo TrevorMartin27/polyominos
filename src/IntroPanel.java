@@ -1,4 +1,3 @@
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,13 +8,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class IntroPanel extends JPanel implements ActionListener {
-	private Navigator navigator;
-	
+public class IntroPanel extends Scene implements ActionListener {
 	public IntroPanel(Navigator nav) {
-		this.navigator = nav;
-		
-		this.setBackground(Color.WHITE);
+		super(nav);
 		
 		JPanel column = new JPanel();
 		column.setLayout(new BoxLayout(column, BoxLayout.PAGE_AXIS));
@@ -55,5 +50,11 @@ public class IntroPanel extends JPanel implements ActionListener {
 		} else {
 			System.out.println("Unknown Event Source");
 		}
+	}
+
+	@Override
+	public void onNavigateTo() {
+		// TODO Auto-generated method stub
+		
 	}
 }

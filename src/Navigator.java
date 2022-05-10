@@ -9,9 +9,7 @@ enum Pages {
 public class Navigator {
 	private Container container;
 	
-	private IntroPanel title;
-	private PlayPanel play;
-	private SettingsPanel settings;
+	private Scene title, play, settings;
 	
 	public Navigator(Container container, Config config) {
 		this.container = container;

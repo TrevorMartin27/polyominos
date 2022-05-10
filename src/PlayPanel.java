@@ -3,17 +3,17 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-public class PlayPanel extends JPanel {
+public class PlayPanel extends Scene {
 	private Config config;
-	private Navigator navigator;
 	
 	private PlayCanvas canvas;
 	
 	private FallingPolyomino falling;
 
 	public PlayPanel(Navigator nav, Config config) {
+		super(nav);
+		
 		this.config = config;
-		this.navigator = nav;
 		
 		this.setBackground(Color.WHITE);
 
@@ -67,5 +67,11 @@ public class PlayPanel extends JPanel {
 		super.paintComponent(g);
 
 		this.canvas.paintComponent(g, falling);
+	}
+
+	@Override
+	public void onNavigateTo() {
+		// TODO Auto-generated method stub
+		
 	}
 }
