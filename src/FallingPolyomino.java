@@ -21,6 +21,8 @@ public class FallingPolyomino extends Polyomino {
 	public boolean tick(PlayCanvas canvas) {
 		boolean will_collide = this.willCollide(canvas);
 		
+		this.y++;
+
 		return will_collide;
 	}
 }

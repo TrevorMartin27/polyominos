@@ -92,7 +92,9 @@ public class PlayPanel extends Scene {
 	}
 	
 	private void tick() {
-		System.out.println("TICK");
+		this.falling.tick(this.canvas);
+
+		this.repaint();
 	}
 
 	public void paintComponent(Graphics g) {

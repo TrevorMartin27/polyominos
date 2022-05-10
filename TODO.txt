@@ -2,7 +2,7 @@
 	[*] Have the ticker start
 		[ ] Make the speed configurable in configure and have it change over time (?)
 
-	[ ] Have the tile move downward
+	[*] Have the tile move downward
 	[ ] Have the tile detect when it hits the ground
 	[ ] Have arrow keys (right and left) control the tile
 
