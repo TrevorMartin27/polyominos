@@ -13,7 +13,7 @@ public class PlayPanel extends Scene {
 	
 	private Timer ticker = null;
 	
-	private FallingPolyomino falling;
+	private FallingPolyomino[] falling;
 
 	public PlayPanel(Navigator nav, Config config) {
 		super(nav);
@@ -23,14 +23,22 @@ public class PlayPanel extends Scene {
 		this.setBackground(Color.WHITE);
 
 		this.canvas = new PlayCanvas();
-
-		this.falling = new FallingPolyomino(
-			this.config.getPolyominos().get(1)
-		);
-	}
-
-	public void setFalling(Polyomino polyomino) {
-		this.falling = new FallingPolyomino(polyomino);
+		
+		this.falling = new FallingPolyomino[25];
+		for(int i = 0; i < this.falling.length; i++) {
+			int type_index = i % this.config.getPolyominos().size();
+			
+			FallingPolyomino curr;
+			
+			curr = new FallingPolyomino(
+				this.config.getPolyominos().get(type_index)
+			);
+			curr.setColor((i % 4) + 1);
+			curr.setX((int)(Math.random() * 12) - 1);
+			curr.setY((int)(Math.random() * 23) - 2);
+			
+			this.falling[i] = curr;
+		}
 	}
 
 	private boolean checkLineClear() {
@@ -92,7 +100,9 @@ public class PlayPanel extends Scene {
 	}
 	
 	private void tick() {
-		this.falling.tick(this.canvas);
+		for(FallingPolyomino f : this.falling) {
+			f.tick(this.canvas);
+		}
 
 		this.repaint();
 	}
@@ -100,7 +110,7 @@ public class PlayPanel extends Scene {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
-		this.canvas.paintComponent(g, falling);
+		this.canvas.paintComponent(g, this.falling);
 	}
 
 	@Override
