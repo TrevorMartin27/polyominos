@@ -1,0 +1,18 @@
+[ ] Get a Game Loop
+	[ ] Have the ticker start
+
+	[ ] Have the tile move downward
+	[ ] Have the tile detect when it hits the ground
+	[ ] Have arrow keys (right and left) control the tile
+
+	[ ] Detect a line filled
+		[ ] Detect multible lines filled
+	[ ] Add a score
+
+	[ ] Add rotations
+
+[ ] Be able to configure the game
+	[ ] Block sizes
+
+[ ] Save High Score
+	[ ] Maybe on a web server? (IF I HAVE NOTHING BETTER TO DO)
