@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class PlayPanel extends Scene {
-	private final int TICKS_PER_SECOND = 10;
+	private final int TICKS_PER_SECOND = 2;
 	
 	private Config config;
 	
