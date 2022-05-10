@@ -10,16 +10,16 @@ public class FallingPolyomino extends Polyomino {
 		this.color = 1;
 	}
 	
-	public int get_x() { return this.x; }
-	public int get_y() { return this.y; }
-	public int get_color() { return this.color; }
+	public int getX() { return this.x; }
+	public int getY() { return this.y; }
+	public int getColor() { return this.color; }
 	
-	public boolean will_collide(PlayCanvas canvas) {
+	public boolean willCollide(PlayCanvas canvas) {
 		return false;
 	}
 	
 	public boolean tick(PlayCanvas canvas) {
-		boolean will_collide = this.will_collide(canvas);
+		boolean will_collide = this.willCollide(canvas);
 		
 		return will_collide;
 	}

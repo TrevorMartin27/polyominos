@@ -22,8 +22,8 @@ public class Polyomino {
 		}
 	}
 	
-	public int get_width() { return this.width; }
-	public int get_height() { return this.height; }
+	public int getWidth() { return this.width; }
+	public int getHeight() { return this.height; }
 	
 	public Polyomino rotate() {
 		Polyomino res = new Polyomino(this.height, this.width);

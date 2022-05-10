@@ -58,12 +58,12 @@ public class PlayCanvas extends JPanel {
 					
 					// Render the falling piece if there
 					if(falling != null) {
-						if((x - 1 >= falling.get_x()) && (x - 1 < falling.get_x() + falling.get_width()) &&
-							(y - 1 >= falling.get_y()) && (y - 1 < falling.get_y() + falling.get_height())) {
-							int local_x = x - falling.get_x() - 1, local_y = y - falling.get_y() - 1;
+						if((x - 1 >= falling.getX()) && (x - 1 < falling.getX() + falling.getWidth()) &&
+							(y - 1 >= falling.getY()) && (y - 1 < falling.getY() + falling.getHeight())) {
+							int local_x = x - falling.getX() - 1, local_y = y - falling.getY() - 1;
 
 							if(falling.getCell(local_x, local_y)) {
-								curr = falling.get_color();
+								curr = falling.getColor();
 							}
 						}
 					}
