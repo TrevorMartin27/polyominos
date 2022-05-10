@@ -2,11 +2,16 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 public class PlayPanel extends Scene {
+	private final int TICKS_PER_SECOND = 10;
+	
 	private Config config;
 	
 	private PlayCanvas canvas;
+	
+	private Timer ticker = null;
 	
 	private FallingPolyomino falling;
 
@@ -62,6 +67,33 @@ public class PlayPanel extends Scene {
 			this.canvas.setCell(i, 0, 0);
 		}
 	}
+	
+	private void startTicker() {
+		this.stopTicker();
+		this.ticker = new Timer(1000 / TICKS_PER_SECOND, e -> {
+			this.tick();
+		});
+		this.ticker.start();
+	}
+	
+	private void stopTicker() {
+		if(this.ticker != null) {
+			this.ticker.stop();
+			this.ticker = null;
+		}
+	}
+	
+	private void startGame() {
+		this.startTicker();
+	}
+	
+	private void stopGame() {
+		this.stopTicker();
+	}
+	
+	private void tick() {
+		System.out.println("TICK");
+	}
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -71,6 +103,6 @@ public class PlayPanel extends Scene {
 
 	@Override
 	public void onNavigateTo() {
-		this.canvas.startGame();
+		this.startGame();
 	}
 }
