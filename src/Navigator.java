@@ -20,22 +20,28 @@ public class Navigator {
 	}
 	
 	public void setPage(Pages page) {
-		this.container.removeAll();
+		Scene new_scene = null;
 		
+		// TODO: Move this into a less ugly structure
 		switch(page) {
 		case Title:
-			// System.out.println("Switching to Title");
-			this.container.add(this.title);
+			new_scene = this.title;
 			break;
 		case Play:
-			// System.out.println("Switching to Play");
-			this.container.add(this.play);
+			new_scene = this.play;
 			break;
 		case Settings:
-			// System.out.println("Switching to Settings");
-			this.container.add(this.settings);
+			new_scene = this.settings;
 			break;
 		}
+		
+		if(new_scene == null) {
+			System.out.println("Warning: Unknown Scene");
+			return;
+		}
+		
+		this.container.removeAll();
+		this.container.add(new_scene);
 		
 		/**
 		 * For some reason, some braindead developed decided that adding a component to a container shouldn't cause a redraw
@@ -45,5 +51,7 @@ public class Navigator {
 		*/
 		this.container.validate();
 		this.container.repaint();
+		
+		new_scene.onNavigateTo();
 	}
 }
