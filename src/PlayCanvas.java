@@ -34,6 +34,7 @@ public class PlayCanvas extends JPanel {
 	private void startTicker() {
 		this.stopTicker();
 		this.ticker = new Timer(1000 / TICKS_PER_SECOND, e -> { this.tick(); });
+		this.ticker.start();
 	}
 	
 	private void stopTicker() {

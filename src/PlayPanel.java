@@ -71,7 +71,6 @@ public class PlayPanel extends Scene {
 
 	@Override
 	public void onNavigateTo() {
-		// TODO Auto-generated method stub
-		
+		this.canvas.startGame();
 	}
 }
