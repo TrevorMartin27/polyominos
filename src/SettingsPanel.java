@@ -45,7 +45,7 @@ public class SettingsPanel extends JPanel implements ActionListener {
 			String id = source.getText();
 			
 			if(id.equals("Back")) {
-				this.navigator.set_page(Pages.Title);
+				this.navigator.setPage(Pages.Title);
 			} else {
 				System.out.println("Unknown Button Pressed");
 			}

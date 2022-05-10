@@ -20,14 +20,14 @@ public class PlayCanvas extends JPanel {
 		this.board = new int[BOARD_HEIGHT][BOARD_WIDTH];
 	}
 	
-	public int get_width() { return this.BOARD_WIDTH; }
-	public int get_height() { return this.BOARD_HEIGHT; }
+	public int getWidth() { return this.BOARD_WIDTH; }
+	public int getHeight() { return this.BOARD_HEIGHT; }
 
-	public void set_cell(int x, int y, int value) {
+	public void setCell(int x, int y, int value) {
 		this.board[y][x] = value;
 	}
 	
-	public int get_cell(int x, int y) {
+	public int getCell(int x, int y) {
 		return this.board[y][x];
 	}
 	

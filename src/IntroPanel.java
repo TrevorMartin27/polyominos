@@ -46,9 +46,9 @@ public class IntroPanel extends JPanel implements ActionListener {
 			String id = source.getText();
 			
 			if(id.equals("Play")) {
-				this.navigator.set_page(Pages.Play);
+				this.navigator.setPage(Pages.Play);
 			} else if(id.equals("Settings")) {
-				this.navigator.set_page(Pages.Settings);
+				this.navigator.setPage(Pages.Settings);
 			} else {
 				System.out.println("Unknown Button Pressed");
 			}

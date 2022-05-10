@@ -20,7 +20,7 @@ public class Polyominos {
 			this.window.getContentPane(),
 			this.config
 		);
-		this.navigator.set_page(Pages.Title);
+		this.navigator.setPage(Pages.Title);
 		
 		this.window.setVisible(true);
 	}

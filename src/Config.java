@@ -9,10 +9,10 @@ public class Config {
 	public Config() {
 		this.factory = new PolyominoFactory();
 
-		this.set_polyomino_size(4);
+		this.setPolyominoSize(4);
 	}
 
-	public void set_polyomino_size(int size) {
+	public void setPolyominoSize(int size) {
 		if(size != this.polyomino_size) {
 			this.polyomino_size = size;
 
@@ -20,11 +20,11 @@ public class Config {
 		}
 	}
 
-	public int get_polyomino_size() {
+	public int getPolyominoSize() {
 		return this.polyomino_size;
 	}
 
-	public LinkedList<Polyomino> get_polyominos() {
+	public LinkedList<Polyomino> getPolyominos() {
 		return this.polyominos;
 	}
 }

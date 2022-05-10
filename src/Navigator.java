@@ -21,7 +21,7 @@ public class Navigator {
 		this.settings = new SettingsPanel(this, config);
 	}
 	
-	public void set_page(Pages page) {
+	public void setPage(Pages page) {
 		this.container.removeAll();
 		
 		switch(page) {
