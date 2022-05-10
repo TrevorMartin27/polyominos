@@ -1,5 +1,6 @@
 [ ] Get a Game Loop
-	[ ] Have the ticker start
+	[*] Have the ticker start
+		[ ] Make the speed configurable in configure and have it change over time (?)
 
 	[ ] Have the tile move downward
 	[ ] Have the tile detect when it hits the ground
