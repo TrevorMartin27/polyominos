@@ -141,8 +141,6 @@ public class PlayPanel extends Scene implements KeyListener {
 			this.repaint();
 			break;
 		case KeyEvent.VK_DOWN:
-			System.out.println("DOWN");
-
 			// NOTE: I may want to do something different
 			// Is it better to do an instant down?
 
