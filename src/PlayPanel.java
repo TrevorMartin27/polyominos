@@ -53,7 +53,7 @@ public class PlayPanel extends Scene implements KeyListener {
 
 		boolean full = true;
 		for(int i = 0; i < width; i++) {
-			if(this.canvas.getCell(height - 1, i) == 0) {
+			if(this.canvas.getCell(i, height - 1) == 0) {
 				full = false;
 				break;
 			}
@@ -66,15 +66,10 @@ public class PlayPanel extends Scene implements KeyListener {
 		int width = this.canvas.getWidth(),
 			height = this.canvas.getHeight();
 
-		boolean bottom_full = this.checkLineClear();
-		if(!bottom_full) {
-			return;
-		}
-
 		for(int y = height - 1; y > 0; y--) {
 			for(int x = 0; x < width; x++) {
-				int cell = this.canvas.getCell(x, y);
-				this.canvas.setCell(x, y - 1, cell);
+				int cell = this.canvas.getCell(x, y - 1);
+				this.canvas.setCell(x, y, cell);
 			}
 		}
 		for(int i = 0; i < width; i++) {
@@ -112,6 +107,15 @@ public class PlayPanel extends Scene implements KeyListener {
 
 		if(landed) {
 			this.newFalling();
+
+			int clear_cnt = 0;
+			while(this.checkLineClear()) {
+				clear_cnt++;
+				this.clearLine();
+			}
+			if(clear_cnt > 0) {
+				System.out.println("CLEAR: " + clear_cnt);
+			}
 		}
 	}
 
