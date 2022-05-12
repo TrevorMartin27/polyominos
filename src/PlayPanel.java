@@ -41,7 +41,7 @@ public class PlayPanel extends Scene implements KeyListener {
 		int polyomino_count = polyominos.size();
 
 		int index = (int)(Math.random() * polyomino_count);
-		int color = (int)(Math.random() * 3) + 1;
+		int color = (int)(Math.random() * 4) + 1;
 
 		// O(n), but I don't care
 		this.setFalling(polyominos.get(index), color);
