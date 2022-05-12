@@ -1,4 +1,3 @@
-
 public class FallingPolyomino extends Polyomino {
 	private int x, y, color;
 	
@@ -32,6 +31,34 @@ public class FallingPolyomino extends Polyomino {
 		return false;
 	}
 	
+	public boolean willCollideHorizontal(PlayCanvas canvas, int delta) {
+		if(delta == 0) return false;
+
+		int lx = delta > 0 ? this.getWidth() - 1 : 0;
+		for(int y = 0; y < this.getHeight(); y++) {
+			if(this.getCell(lx, y)) {
+				int gx = lx + this.x + delta;
+				if((gx < 0) || (gx >= 10)) { // TODO: Make 10 constant
+					return true;
+				}
+
+				if(canvas.getCell(gx, this.y + y) != 0) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	public boolean moveHorizontal(PlayCanvas canvas, int delta) {
+		if(!this.willCollideHorizontal(canvas, delta)) {
+			this.x += delta;
+
+			return true;
+		}
+		return false;
+	}
+
 	public boolean tick(PlayCanvas canvas) {
 		boolean will_collide = this.willCollide(canvas);
 		

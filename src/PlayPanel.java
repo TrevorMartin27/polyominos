@@ -124,15 +124,23 @@ public class PlayPanel extends Scene implements KeyListener {
 		switch(key_code) {
 		case KeyEvent.VK_UP:
 			System.out.println("UP");
+
+			this.repaint();
 			break;
 		case KeyEvent.VK_DOWN:
 			System.out.println("DOWN");
+
+			this.repaint();
 			break;
 		case KeyEvent.VK_RIGHT:
-			System.out.println("RIGHT");
+			this.falling.moveHorizontal(this.canvas, 1);
+
+			this.repaint();
 			break;
 		case KeyEvent.VK_LEFT:
-			System.out.println("LEFT");
+			this.falling.moveHorizontal(this.canvas, -1);
+
+			this.repaint();
 			break;
 		}
 	}
