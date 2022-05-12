@@ -47,26 +47,30 @@ public class PlayPanel extends Scene implements KeyListener {
 		this.setFalling(polyominos.get(index), color);
 	}
 
-	private boolean checkLineClear() {
+	private int checkLineClear() {
 		int width = this.canvas.getWidth(),
 			height = this.canvas.getHeight();
 
-		boolean full = true;
-		for(int i = 0; i < width; i++) {
-			if(this.canvas.getCell(i, height - 1) == 0) {
-				full = false;
-				break;
+		for(int y = 0; y < height; y++) {
+			boolean full = true;
+			for(int x = 0; x < width; x++) {
+				if(this.canvas.getCell(x, y) == 0) {
+					full = false;
+					continue;
+				}
+			}
+			if(full) {
+				return y;
 			}
 		}
 
-		return full;
+		return -1;
 	}
 
-	private void clearLine() {
-		int width = this.canvas.getWidth(),
-			height = this.canvas.getHeight();
+	private void clearLine(int line) {
+		int width = this.canvas.getWidth();
 
-		for(int y = height - 1; y > 0; y--) {
+		for(int y = line; y > 0; y--) {
 			for(int x = 0; x < width; x++) {
 				int cell = this.canvas.getCell(x, y - 1);
 				this.canvas.setCell(x, y, cell);
@@ -108,10 +112,10 @@ public class PlayPanel extends Scene implements KeyListener {
 		if(landed) {
 			this.newFalling();
 
-			int clear_cnt = 0;
-			while(this.checkLineClear()) {
+			int clear_cnt = 0, line;
+			while((line = this.checkLineClear()) > 0) {
 				clear_cnt++;
-				this.clearLine();
+				this.clearLine(line);
 			}
 			if(clear_cnt > 0) {
 				System.out.println("CLEAR: " + clear_cnt);
