@@ -36,7 +36,10 @@ public class PlayCanvas extends JPanel {
 			Color.RED,
 			Color.ORANGE,
 			Color.GREEN,
-			Color.PINK
+			Color.BLUE,
+			Color.CYAN,
+			Color.DARK_GRAY,
+			Color.GREEN
 		};
 		
 		for(int y = 0; y < BOARD_HEIGHT + 2; y++) {
