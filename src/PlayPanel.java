@@ -1,10 +1,11 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class PlayPanel extends Scene {
+public class PlayPanel extends Scene implements KeyListener {
 	private final int TICKS_PER_SECOND = 2;
 	
 	private Config config;
@@ -20,9 +21,12 @@ public class PlayPanel extends Scene {
 		
 		this.config = config;
 		
-		this.setBackground(Color.WHITE);
+		this.setFocusable(true);
+		this.addKeyListener(this);
 
 		this.canvas = new PlayCanvas();
+		this.canvas.setFocusable(true);
+		this.canvas.addKeyListener(this);
 
 		this.falling = new FallingPolyomino(
 			this.config.getPolyominos().get(1)
@@ -106,5 +110,33 @@ public class PlayPanel extends Scene {
 	@Override
 	public void onNavigateTo() {
 		this.startGame();
+
+		this.requestFocusInWindow();
 	}
+
+	@Override
+	public void keyTyped(KeyEvent e) { /* ... */ }
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		int key_code = e.getKeyCode();
+
+		switch(key_code) {
+		case KeyEvent.VK_UP:
+			System.out.println("UP");
+			break;
+		case KeyEvent.VK_DOWN:
+			System.out.println("DOWN");
+			break;
+		case KeyEvent.VK_RIGHT:
+			System.out.println("RIGHT");
+			break;
+		case KeyEvent.VK_LEFT:
+			System.out.println("LEFT");
+			break;
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) { /* ... */ }
 }
