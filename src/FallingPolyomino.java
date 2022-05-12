@@ -15,13 +15,13 @@ public class FallingPolyomino extends Polyomino {
 	public int getColor() { return this.color; }
 	
 	public boolean willCollide(PlayCanvas canvas) {
+		if(this.y + this.getHeight() >= 20) {
+			return true;
+		}
 		for(int lx = 0; lx < this.getWidth(); lx++) {
 			for(int ly = this.getHeight() - 1; ly >= 0; ly--) {
 				if(this.getCell(lx, ly)) {
-					if(
-						(canvas.getCell(lx + this.x, ly + this.y + 1) != 0) ||
-						(this.y + ly >= 20) // TODO: Use constant for this
-					) {
+					if(canvas.getCell(lx + this.x, ly + this.y + 1) != 0) {
 						return true;
 					}
 					continue;
