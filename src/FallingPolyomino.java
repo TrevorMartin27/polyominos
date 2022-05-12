@@ -1,6 +1,6 @@
 public class FallingPolyomino extends Polyomino {
 	private int x, y, color;
-	
+
 	public FallingPolyomino(Polyomino parent) {
 		super(parent);
 		
@@ -59,11 +59,26 @@ public class FallingPolyomino extends Polyomino {
 		return false;
 	}
 
+	public void writeToBoard(PlayCanvas canvas) {
+		for(int y = 0; y < this.getHeight(); y++) {
+			int gy = this.y + y;
+			for(int x = 0; x < this.getWidth(); x++) {
+				int gx = this.x + x;
+
+				if(this.getCell(x, y)) {
+					canvas.setCell(gx, gy, this.getColor());
+				}
+			}
+		}
+	}
+
 	public boolean tick(PlayCanvas canvas) {
 		boolean will_collide = this.willCollide(canvas);
 		
 		if(!will_collide) {
 			this.y++;
+		} else {
+			this.writeToBoard(canvas);
 		}
 
 		return will_collide;

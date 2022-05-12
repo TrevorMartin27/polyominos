@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.LinkedList;
 
 import javax.swing.Timer;
 
@@ -28,13 +29,21 @@ public class PlayPanel extends Scene implements KeyListener {
 		this.canvas.setFocusable(true);
 		this.canvas.addKeyListener(this);
 
-		this.falling = new FallingPolyomino(
-			this.config.getPolyominos().get(1)
-		);
+		this.newFalling();
 	}
 
 	public void setFalling(Polyomino polyomino) {
 		this.falling = new FallingPolyomino(polyomino);
+	}
+
+	public void newFalling() {
+		LinkedList<Polyomino> polyominos = this.config.getPolyominos();
+		int polyomino_count = polyominos.size();
+
+		int index = (int)(Math.random() * polyomino_count);
+
+		// O(n), but I don't care
+		this.setFalling(polyominos.get(index));
 	}
 
 	private boolean checkLineClear() {
@@ -94,11 +103,15 @@ public class PlayPanel extends Scene implements KeyListener {
 	private void stopGame() {
 		this.stopTicker();
 	}
-	
+
 	private void tick() {
-		this.falling.tick(this.canvas);
+		boolean landed = this.falling.tick(this.canvas);
 
 		this.repaint();
+
+		if(landed) {
+			this.newFalling();
+		}
 	}
 
 	public void paintComponent(Graphics g) {
