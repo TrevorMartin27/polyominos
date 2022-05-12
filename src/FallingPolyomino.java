@@ -1,6 +1,12 @@
 public class FallingPolyomino extends Polyomino {
 	private int x, y, color;
 
+	public FallingPolyomino(Polyomino parent, int color) {
+		super(parent);
+
+		this.color = color;
+	}
+
 	public FallingPolyomino(Polyomino parent) {
 		super(parent);
 		

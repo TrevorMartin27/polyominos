@@ -32,6 +32,7 @@ public class PlayCanvas extends JPanel {
 		
 		final Color[] colors = {
 			Color.WHITE,
+			// NOTE: To add a color, update FallingPolyomino
 			Color.RED,
 			Color.ORANGE,
 			Color.GREEN,

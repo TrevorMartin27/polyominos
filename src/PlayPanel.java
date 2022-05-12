@@ -32,8 +32,8 @@ public class PlayPanel extends Scene implements KeyListener {
 		this.newFalling();
 	}
 
-	public void setFalling(Polyomino polyomino) {
-		this.falling = new FallingPolyomino(polyomino);
+	public void setFalling(Polyomino polyomino, int color) {
+		this.falling = new FallingPolyomino(polyomino, color);
 	}
 
 	public void newFalling() {
@@ -41,9 +41,10 @@ public class PlayPanel extends Scene implements KeyListener {
 		int polyomino_count = polyominos.size();
 
 		int index = (int)(Math.random() * polyomino_count);
+		int color = (int)(Math.random() * 3) + 1;
 
 		// O(n), but I don't care
-		this.setFalling(polyominos.get(index));
+		this.setFalling(polyominos.get(index), color);
 	}
 
 	private boolean checkLineClear() {
