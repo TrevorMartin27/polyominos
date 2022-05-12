@@ -130,7 +130,10 @@ public class PlayPanel extends Scene implements KeyListener {
 		case KeyEvent.VK_DOWN:
 			System.out.println("DOWN");
 
-			this.repaint();
+			// NOTE: I may want to do something different
+			// Is it better to do an instant down?
+
+			this.tick();
 			break;
 		case KeyEvent.VK_RIGHT:
 			this.falling.moveHorizontal(this.canvas, 1);
