@@ -11,6 +11,8 @@
 	[ ] Add a score
 
 	[*] Add rotations (TODO: Make less janky)
+	
+	[ ] Be able to loose
 
 [ ] Be able to configure the game
 	[ ] Block sizes
