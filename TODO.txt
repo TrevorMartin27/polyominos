@@ -4,10 +4,10 @@
 
 	[*] Have the tile move downward
 	[*] Have the tile detect when it hits the ground
-	[ ] Have arrow keys (right and left) control the tile
+	[*] Have arrow keys (right and left) control the tile
 
-	[ ] Detect a line filled
-		[ ] Detect multible lines filled
+	[*] Detect a line filled
+		[*] Detect multible lines filled
 	[ ] Add a score
 
 	[ ] Add rotations
