@@ -145,8 +145,14 @@ public class PlayPanel extends Scene implements KeyListener {
 
 		switch(key_code) {
 		case KeyEvent.VK_UP:
+			FallingPolyomino rotated = this.falling.rotate();
+			if(rotated.willCollide(canvas)) {
+				break;
+			}
+			
 			System.out.println("UP");
 
+			this.falling = rotated;
 			this.repaint();
 			break;
 		case KeyEvent.VK_DOWN:

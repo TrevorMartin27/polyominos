@@ -19,6 +19,21 @@ public class FallingPolyomino extends Polyomino {
 	public int getY() { return this.y; }
 	public int getColor() { return this.color; }
 	
+	public void setX(int x) { this.x = x; }
+	public void setY(int y) { this.y = y; }
+	public void setColor(int color) { this.color = color; }
+	
+	public FallingPolyomino rotate() {
+		Polyomino rotated = super.rotate();
+		
+		FallingPolyomino res = new FallingPolyomino(rotated);
+		res.setX(this.x);
+		res.setY(this.y);
+		res.setColor(this.color);
+		
+		return res;
+	}
+	
 	public boolean willCollide(PlayCanvas canvas) {
 		if(this.y + this.getHeight() >= 20) {
 			return true;
@@ -34,6 +49,20 @@ public class FallingPolyomino extends Polyomino {
 			}
 		}
 		
+		return false;
+	}
+	
+	public boolean isColliding(PlayCanvas canvas) {
+		for(int y = 0; y < this.getHeight(); y++) {
+			for(int x = 0; x < this.getWidth(); x++) {
+				if(
+					this.getCell(x, y) &&
+					canvas.getCell(x + this.x, y + this.y) != 0
+				) {
+					return true;
+				}
+			}
+		}
 		return false;
 	}
 	
