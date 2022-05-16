@@ -30,8 +30,8 @@ public class Polyomino {
 
 		for(int y = 0; y < this.height; y++) {
 			for(int x = 0; x < this.width; x++) {
-				int nx = y,
-					ny = this.width - 1 - x;
+				int nx = this.height - 1 - y,
+					ny = x;
 				res.setCell(nx, ny, this.getCell(x, y));
 			}
 		}
