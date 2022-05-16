@@ -10,7 +10,7 @@
 		[*] Detect multible lines filled
 	[ ] Add a score
 
-	[ ] Add rotations
+	[*] Add rotations (TODO: Make less janky)
 
 [ ] Be able to configure the game
 	[ ] Block sizes
