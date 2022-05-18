@@ -156,8 +156,6 @@ public class PlayPanel extends Scene implements KeyListener {
 			if(rotated.willCollide(canvas)) {
 				break;
 			}
-			
-			System.out.println("UP");
 
 			this.falling = rotated;
 			this.repaint();
