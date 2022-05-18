@@ -112,10 +112,8 @@ public class PlayPanel extends Scene implements KeyListener {
 		if(landed) {
 			this.newFalling();
 			if(this.falling.isColliding(this.canvas)) {
-				// YOU LOSE YOU FOOL
-				System.out.println("Game Lose");
-				
-				this.stopGame();
+				// Lose
+				this.canvas.clear();
 				return;
 			}
 

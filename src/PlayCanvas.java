@@ -82,4 +82,12 @@ public class PlayCanvas extends JPanel {
 			}
 		}
 	}
+
+	public void clear() {
+		for(int y = 0; y < BOARD_HEIGHT; y++) {
+			for(int x = 0; x < BOARD_WIDTH; x++) {
+				this.board[y][x] = 0;
+			}
+		}
+	}
 }
