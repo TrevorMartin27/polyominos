@@ -10,6 +10,7 @@ public class PlayCanvas extends JPanel {
 		BOARD_WIDTH = 10;
 	
 	private int[][] board;
+	private int current_score = 0, max_score = 0;
 	
 	public PlayCanvas() {
 		// Board is by default all 0s
@@ -81,6 +82,16 @@ public class PlayCanvas extends JPanel {
 				}
 			}
 		}
+		
+		int sidebar_start = (BOARD_WIDTH + 2) * (CELL_SIZE + CELL_SPACING);
+		
+		g.setColor(Color.WHITE);
+		g.fill3DRect(sidebar_start, 0,
+			150, (BOARD_HEIGHT + 2) * (CELL_SIZE + CELL_SPACING),
+			false);
+		
+		g.drawString("High Score:    " + this.max_score, sidebar_start, 15);
+		g.drawString("Current Score: " + this.current_score, sidebar_start, 40);
 	}
 
 	public void clear() {
@@ -89,5 +100,24 @@ public class PlayCanvas extends JPanel {
 				this.board[y][x] = 0;
 			}
 		}
+		
+		this.max_score = Math.max(this.current_score, this.max_score);
+		this.current_score = 0;
+	}
+	
+	public void setCurrentScore(int score) {
+		this.current_score = score;
+	}
+	
+	public int getCurrentScore() {
+		return this.current_score;
+	}
+	
+	public void incCurrentScore(int score) {
+		this.setCurrentScore(this.getCurrentScore() + score);
+	}
+	
+	public void setHighScore(int score) {
+		this.max_score = score;
 	}
 }

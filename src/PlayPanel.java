@@ -123,7 +123,7 @@ public class PlayPanel extends Scene implements KeyListener {
 				this.clearLine(line);
 			}
 			if(clear_cnt > 0) {
-				System.out.println("CLEAR: " + clear_cnt);
+				this.canvas.incCurrentScore(clear_cnt * 5);
 			}
 		}
 	}
