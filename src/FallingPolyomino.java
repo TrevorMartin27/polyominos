@@ -53,6 +53,10 @@ public class FallingPolyomino extends Polyomino {
 	}
 	
 	public boolean isColliding(PlayCanvas canvas) {
+		if((this.x + this.getWidth()) > 10) { // Make constant
+			return true;
+		}
+
 		for(int y = 0; y < this.getHeight(); y++) {
 			for(int x = 0; x < this.getWidth(); x++) {
 				if(
