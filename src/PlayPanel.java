@@ -28,8 +28,6 @@ public class PlayPanel extends Scene implements KeyListener {
 		this.canvas = new PlayCanvas();
 		this.canvas.setFocusable(true);
 		this.canvas.addKeyListener(this);
-
-		this.newFalling();
 	}
 
 	public void setFalling(Polyomino polyomino, int color) {
@@ -97,6 +95,8 @@ public class PlayPanel extends Scene implements KeyListener {
 	}
 	
 	private void startGame() {
+		this.newFalling();
+		
 		this.startTicker();
 	}
 	

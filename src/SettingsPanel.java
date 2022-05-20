@@ -7,9 +7,12 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class SettingsPanel extends Scene implements ActionListener {
 	private Config config;
+	
+	private JTextField size_field;
 	
 	public SettingsPanel(Navigator nav, Config config) {
 		super(nav);
@@ -26,7 +29,16 @@ public class SettingsPanel extends Scene implements ActionListener {
 		JButton back = new JButton("Back");
 		back.addActionListener(this);
 		
+		JLabel size_label = new JLabel("Polyomino Size:");
+		
+		this.size_field = new JTextField(5);
+		this.size_field.setMaximumSize(this.size_field.getPreferredSize());
+		
 		column.add(title);
+		
+		column.add(size_label);
+		column.add(this.size_field);
+		
 		column.add(back);
 		
 		this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
@@ -42,6 +54,15 @@ public class SettingsPanel extends Scene implements ActionListener {
 			String id = source.getText();
 			
 			if(id.equals("Back")) {
+				try {
+					int size = Integer.parseInt(this.size_field.getText().trim());
+					
+					if((size >= 2) && (size <= 8)) {
+						this.config.setPolyominoSize(size);
+					}
+					this.size_field.setText("" + this.config.getPolyominoSize());
+				} catch(NumberFormatException f) { /* ... */ }
+				
 				this.navigator.setPage(Pages.Title);
 			} else {
 				System.out.println("Unknown Button Pressed");
