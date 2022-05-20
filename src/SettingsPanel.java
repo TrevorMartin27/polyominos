@@ -31,7 +31,7 @@ public class SettingsPanel extends Scene implements ActionListener {
 		
 		JLabel size_label = new JLabel("Polyomino Size:");
 		
-		this.size_field = new JTextField(5);
+		this.size_field = new JTextField("" + this.config.getPolyominoSize(), 5);
 		this.size_field.setMaximumSize(this.size_field.getPreferredSize());
 		
 		column.add(title);
