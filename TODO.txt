@@ -14,7 +14,7 @@
 	
 	[*] Be able to loose
 
-[ ] Be able to configure the game
+[*] Be able to configure the game
 	[ ] Block sizes
 
 [ ] Save High Score
