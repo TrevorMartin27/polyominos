@@ -83,15 +83,13 @@ public class PlayCanvas extends JPanel {
 			}
 		}
 		
-		int sidebar_start = (BOARD_WIDTH + 2) * (CELL_SIZE + CELL_SPACING);
+		int sidebar_start = (BOARD_WIDTH + 2) * (CELL_SIZE + CELL_SPACING) + 5;
 		
-		g.setColor(Color.WHITE);
-		g.fill3DRect(sidebar_start, 0,
-			150, (BOARD_HEIGHT + 2) * (CELL_SIZE + CELL_SPACING),
-			false);
+		g.setColor(Color.BLACK);
 		
-		g.drawString("High Score:    " + this.max_score, sidebar_start, 15);
-		g.drawString("Current Score: " + this.current_score, sidebar_start, 30);
+		g.drawString("Press 'q' to Quit", sidebar_start, 15);
+		g.drawString("High Score:    " + this.max_score, sidebar_start, 45);
+		g.drawString("Current Score: " + this.current_score, sidebar_start, 60);
 	}
 
 	public void clear() {
@@ -119,5 +117,9 @@ public class PlayCanvas extends JPanel {
 	
 	public void setHighScore(int score) {
 		this.max_score = score;
+	}
+	
+	public int getHighScore() {
+		return this.max_score;
 	}
 }

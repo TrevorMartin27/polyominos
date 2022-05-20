@@ -16,6 +16,8 @@ public class PlayPanel extends Scene implements KeyListener {
 	private Timer ticker = null;
 	
 	private FallingPolyomino falling;
+	
+	private int high_score = 0;
 
 	public PlayPanel(Navigator nav, Config config) {
 		super(nav);
@@ -96,6 +98,7 @@ public class PlayPanel extends Scene implements KeyListener {
 	
 	private void startGame() {
 		this.newFalling();
+		this.canvas.setHighScore(this.high_score);
 		
 		this.startTicker();
 	}
@@ -124,6 +127,7 @@ public class PlayPanel extends Scene implements KeyListener {
 			}
 			if(clear_cnt > 0) {
 				this.canvas.incCurrentScore(clear_cnt * 5);
+				this.high_score = this.canvas.getHighScore();
 			}
 		}
 	}
@@ -173,6 +177,9 @@ public class PlayPanel extends Scene implements KeyListener {
 			this.falling.moveHorizontal(this.canvas, -1);
 
 			this.repaint();
+			break;
+		case KeyEvent.VK_Q:
+			this.navigator.setPage(Pages.Title);
 			break;
 		}
 	}
