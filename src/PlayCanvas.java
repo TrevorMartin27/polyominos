@@ -91,7 +91,7 @@ public class PlayCanvas extends JPanel {
 			false);
 		
 		g.drawString("High Score:    " + this.max_score, sidebar_start, 15);
-		g.drawString("Current Score: " + this.current_score, sidebar_start, 40);
+		g.drawString("Current Score: " + this.current_score, sidebar_start, 30);
 	}
 
 	public void clear() {
