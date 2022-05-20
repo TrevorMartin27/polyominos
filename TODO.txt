@@ -8,11 +8,11 @@
 
 	[*] Detect a line filled
 		[*] Detect multible lines filled
-	[ ] Add a score
+	[*] Add a score
 
 	[*] Add rotations (TODO: Make less janky)
 	
-	[ ] Be able to loose
+	[*] Be able to loose
 
 [ ] Be able to configure the game
 	[ ] Block sizes
