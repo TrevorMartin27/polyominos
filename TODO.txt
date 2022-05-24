@@ -1,4 +1,4 @@
-[ ] Get a Game Loop
+[*] Get a Game Loop
 	[*] Have the ticker start
 		[ ] Make the speed configurable in configure and have it change over time (?)
 
@@ -15,7 +15,7 @@
 	[*] Be able to loose
 
 [*] Be able to configure the game
-	[ ] Block sizes
+	[*] Block sizes
 
-[ ] Save High Score
+[*] Save High Score
 	[ ] Maybe on a web server? (IF I HAVE NOTHING BETTER TO DO)

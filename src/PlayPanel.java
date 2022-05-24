@@ -30,6 +30,8 @@ public class PlayPanel extends Scene implements KeyListener {
 		this.canvas = new PlayCanvas();
 		this.canvas.setFocusable(true);
 		this.canvas.addKeyListener(this);
+		
+		this.setHighScore(Polyominos.getSavedHighScore());
 	}
 
 	public void setFalling(Polyomino polyomino, int color) {
@@ -98,7 +100,6 @@ public class PlayPanel extends Scene implements KeyListener {
 	
 	private void startGame() {
 		this.newFalling();
-		this.canvas.setHighScore(this.high_score);
 		
 		this.startTicker();
 	}
@@ -117,6 +118,8 @@ public class PlayPanel extends Scene implements KeyListener {
 			if(this.falling.isColliding(this.canvas)) {
 				// Lose
 				this.canvas.clear();
+				System.out.println(this.canvas.getHighScore());
+				this.setHighScore(this.canvas.getHighScore());
 				return;
 			}
 
@@ -127,7 +130,6 @@ public class PlayPanel extends Scene implements KeyListener {
 			}
 			if(clear_cnt > 0) {
 				this.canvas.incCurrentScore(clear_cnt * 5);
-				this.high_score = this.canvas.getHighScore();
 			}
 		}
 	}
@@ -182,6 +184,13 @@ public class PlayPanel extends Scene implements KeyListener {
 			this.navigator.setPage(Pages.Title);
 			break;
 		}
+	}
+	
+	void setHighScore(int score) {
+		this.high_score = score;
+		this.canvas.setHighScore(score);
+		
+		Polyominos.setSavedHighScore(score);
 	}
 
 	@Override
