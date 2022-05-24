@@ -9,14 +9,12 @@ enum Pages {
 public class Navigator {
 	private Container container;
 	
-	private Scene title, play, settings;
+	private Scene play;
 	
 	public Navigator(Container container, Config config) {
 		this.container = container;
-		
-		this.title = new IntroPanel(this);
+
 		this.play = new PlayPanel(this, config);
-		this.settings = new SettingsPanel(this, config);
 	}
 	
 	public void setPage(Pages page) {
@@ -24,14 +22,8 @@ public class Navigator {
 		
 		// TODO: Move this into a less ugly structure
 		switch(page) {
-		case Title:
-			new_scene = this.title;
-			break;
 		case Play:
 			new_scene = this.play;
-			break;
-		case Settings:
-			new_scene = this.settings;
 			break;
 		}
 		
