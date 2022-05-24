@@ -101,11 +101,14 @@ public class PlayPanel extends Scene implements KeyListener {
 	private void startGame() {
 		this.newFalling();
 		
+		this.canvas.clear();
+		
 		this.startTicker();
 	}
 	
 	private void stopGame() {
 		this.stopTicker();
+		this.canvas.clear();
 	}
 
 	private void tick() {
@@ -181,6 +184,7 @@ public class PlayPanel extends Scene implements KeyListener {
 			this.repaint();
 			break;
 		case KeyEvent.VK_Q:
+			this.stopGame();
 			this.navigator.setPage(Pages.Title);
 			break;
 		}
