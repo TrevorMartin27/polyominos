@@ -3,3 +3,5 @@ bin/**
 
 .classpath
 .project
+
+high_score.txt
