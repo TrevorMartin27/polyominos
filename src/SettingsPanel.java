@@ -5,14 +5,21 @@ import java.awt.event.ActionListener;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class SettingsPanel extends Scene implements ActionListener {
 	private Config config;
 	
 	private JTextField size_field;
+	
+	private static void showPopup(String information) {
+		JFrame frame = new JFrame();
+		JOptionPane.showMessageDialog(frame, information);
+	}
 	
 	public SettingsPanel(Navigator nav, Config config) {
 		super(nav);
@@ -59,9 +66,15 @@ public class SettingsPanel extends Scene implements ActionListener {
 					
 					if((size >= 2) && (size <= 8)) {
 						this.config.setPolyominoSize(size);
+					} else {
+						SettingsPanel.showPopup("The Polyomino size must be between 2 and 8 (inclusive)");
+						return;
 					}
 					this.size_field.setText("" + this.config.getPolyominoSize());
-				} catch(NumberFormatException f) { /* ... */ }
+				} catch(NumberFormatException f) {
+					SettingsPanel.showPopup("Invalid Input");
+					return;
+				}
 				
 				this.navigator.setPage(Pages.Title);
 			} else {
