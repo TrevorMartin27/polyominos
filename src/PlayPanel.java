@@ -24,18 +24,45 @@ public class PlayPanel extends Scene {
 
 		this.canvas = new PlayCanvas();
 		
+		int[] offset = new int[this.canvas.getWidth()];
+		
 		this.falling = new FallingPolyomino[25];
 		for(int i = 0; i < this.falling.length; i++) {
 			int type_index = i % this.config.getPolyominos().size();
 			
-			FallingPolyomino curr;
-			
-			curr = new FallingPolyomino(
+			FallingPolyomino curr = new FallingPolyomino(
 				this.config.getPolyominos().get(type_index)
 			);
-			curr.setColor((i % 4) + 1);
-			curr.setX((int)(Math.random() * 12) - 1);
-			curr.setY((int)(Math.random() * 23) - 2);
+			
+			int x = (int)(Math.random() * this.canvas.getWidth());
+			if(x + curr.getWidth() > this.canvas.getWidth())
+				continue;
+			
+			int y = offset[x];
+			for(int j = 0; j < curr.getWidth(); j++) {
+				if((j + x) >= offset.length) {
+					break;
+				}
+				
+				if(offset[j + x] > y) {
+					y = offset[j + x];
+				}
+			}
+			if(y > (this.canvas.getHeight() + 3)) {
+				continue;
+			}
+			
+			for(int j = x; j < x + curr.getWidth(); j++) {
+				if(j >= offset.length) {
+					break;
+				}
+				
+				offset[j] = y + curr.getHeight();
+			}
+
+			curr.setColor((type_index % 4) + 1);
+			curr.setX(x);
+			curr.setY(y);
 			
 			this.falling[i] = curr;
 		}
@@ -101,6 +128,9 @@ public class PlayPanel extends Scene {
 	
 	private void tick() {
 		for(FallingPolyomino f : this.falling) {
+			if(f == null)
+				continue;
+			
 			f.tick(this.canvas);
 		}
 

@@ -59,6 +59,8 @@ public class PlayCanvas extends JPanel {
 					// Render the falling piece if there
 					if(falling != null) {
 						for(FallingPolyomino f : falling) {
+							if(f == null)
+								continue;
 							if((x - 1 >= f.getX()) && (x - 1 < f.getX() + f.getWidth()) &&
 								(y - 1 >= f.getY()) && (y - 1 < f.getY() + f.getHeight())) {
 								int local_x = x - f.getX() - 1, local_y = y - f.getY() - 1;
